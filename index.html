@@ -42,17 +42,17 @@
             const linkElement = document.querySelector('#link');
 
             try {
-                // 🔗 Requisição direta à API do GitHub
+                
                 const response = await fetch('https://api.github.com/users/jvalmeidadev');
 
-                // Se a resposta não for bem-sucedida, dispara erro manualmente
+                
                 if (!response.ok) {
                     throw new Error(`Erro HTTP: ${response.status}`);
                 }
 
                 const json = await response.json();
 
-                // Atualiza os elementos da página com os dados retornados
+                
                 nameElement.innerText = json.name ? json.name : json.login;
                 usernameElement.innerText = '@' + json.login;
                 avatarElement.src = json.avatar_url;
@@ -62,7 +62,7 @@
                 linkElement.href = json.html_url;
 
             } catch (error) {
-                // Captura erros de rede ou problemas na requisição
+                
                 console.error('Erro ao carregar os dados do GitHub:', error);
                 nameElement.innerText = "Erro ao carregar dados!";
                 usernameElement.innerText = "@erro";
